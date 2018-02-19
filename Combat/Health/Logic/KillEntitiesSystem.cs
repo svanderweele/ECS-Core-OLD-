@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-using unity.Helpers.Animations;
 using UnityEngine;
 
 public class KillEntitiesSystem : ReactiveSystem<GameEntity>

@@ -1,7 +1,13 @@
-﻿public sealed class TargetingSystems : Feature
+﻿
+using Libraries.btcp.ECS.src.AI.Sensors.Targeting.Logic;
+
+namespace Libraries.btcp.ECS.src.AI.Sensors.Targeting
 {
-    public TargetingSystems(Contexts contexts) : base("Targeting Systems")
+    public sealed class TargetingSystems : Feature
     {
-        Add(new RemoveTargetSystem(contexts));
+        public TargetingSystems(Contexts contexts) : base("Targeting Systems")
+        {
+            Add(new RemoveTargetSystem(contexts));
+        }
     }
 }

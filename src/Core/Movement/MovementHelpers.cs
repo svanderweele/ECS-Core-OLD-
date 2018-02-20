@@ -1,4 +1,6 @@
-﻿namespace ECS.Core.Movement
+﻿
+
+namespace Libraries.btcp.ECS.src.Core.Movement
 {
     public class MovementHelpers
     {

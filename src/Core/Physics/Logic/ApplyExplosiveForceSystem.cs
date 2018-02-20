@@ -1,42 +1,47 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+
 using UnityEngine;
 
-public class ApplyExplosiveForceSystem : ReactiveSystem<GameEntity>
+
+namespace Libraries.btcp.ECS.src.Core.Physics.Logic
 {
-    private Contexts m_contexts;
-
-    public ApplyExplosiveForceSystem (Contexts contexts) : base(contexts.game)
+    public class ApplyExplosiveForceSystem : ReactiveSystem<GameEntity>
     {
-        m_contexts = contexts;
-    }
+        private Contexts m_contexts;
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        return context.CreateCollector(GameMatcher.ExplosiveForce.Added());
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.hasExplosiveForce;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach(var e in entities)
+        public ApplyExplosiveForceSystem (Contexts contexts) : base(contexts.game)
         {
-            var steering = Vector2.zero;
+            m_contexts = contexts;
+        }
 
-            if (e.hasSteering)
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {
+            return context.CreateCollector(GameMatcher.ExplosiveForce.Added());
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.hasExplosiveForce;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach(var e in entities)
             {
-                steering = e.steering.value;
-            }
-            
-            var force = e.explosiveForce.value;
+                var steering = Vector2.zero;
 
-            steering += force;
-            e.ReplaceSteering(steering);
-            e.RemoveExplosiveForce();
+                if (e.hasSteering)
+                {
+                    steering = e.steering.value;
+                }
+            
+                var force = e.explosiveForce.value;
+
+                steering += force;
+                e.ReplaceSteering(steering);
+                e.RemoveExplosiveForce();
+            }
         }
     }
 }

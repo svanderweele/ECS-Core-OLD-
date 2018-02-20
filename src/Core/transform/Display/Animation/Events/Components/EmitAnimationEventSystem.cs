@@ -1,4 +1,4 @@
-﻿namespace ECS.Core.transform.Display.Animation.Events.Components
+﻿namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.Components
 {
     public class EmitAnimationEventSystem
     {

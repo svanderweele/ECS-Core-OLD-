@@ -1,4 +1,9 @@
-﻿public sealed class FrictionComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.Physics.Components
 {
-    public float value;
+    public sealed class FrictionComponent : IComponent
+    {
+        public float value;
+    }
 }

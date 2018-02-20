@@ -1,8 +1,14 @@
-﻿public sealed class SightSytems : Feature
+﻿
+using Libraries.btcp.ECS.src.AI.Sensors.Sight.Logic;
+
+namespace Libraries.btcp.ECS.src.AI.Sensors.Sight
 {
-    public SightSytems(Contexts contexts) : base("Sight Systems")
+    public sealed class SightSytems : Feature
     {
-        Add(new UpdateTargetsInSightSystem(contexts));
-        Add(new LookAtTargetSystem(contexts));
+        public SightSytems(Contexts contexts) : base("Sight Systems")
+        {
+            Add(new UpdateTargetsInSightSystem(contexts));
+            Add(new LookAtTargetSystem(contexts));
+        }
     }
 }

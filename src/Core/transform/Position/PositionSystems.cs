@@ -1,4 +1,8 @@
-﻿namespace ECS.Core.transform.Position
+﻿
+using Libraries.btcp.ECS.src.Core.transform.Position.Logic;
+using Libraries.btcp.ECS.src.Core.transform.Position.Shake;
+
+namespace Libraries.btcp.ECS.src.Core.transform.Position
 {
     public sealed class PositionSystems : Feature
     {
@@ -6,7 +10,7 @@
         {
             Add(new AddPositionSystem(contexts));
             Add(new RenderPositionSystem(contexts));
-            Add(new ShakeSystems(contexts));
+            Add(new EffectShakeSystems(contexts));
         }
     }
 }   

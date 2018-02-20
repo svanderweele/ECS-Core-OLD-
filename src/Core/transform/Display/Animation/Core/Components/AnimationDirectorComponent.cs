@@ -1,8 +1,9 @@
-﻿using unity.Helpers.Animations;
+﻿using Entitas;
+using Libraries.btcp.RPG_Core.src.Directors.Animation;
 
-namespace ECS.Core.transform.Display.Animation.Core.Components
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Core.Components
 {
-    public sealed class AnimationDirectorComponent : Entitas.IComponent
+    public sealed class AnimationDirectorComponent : IComponent
     {
         public AnimationDirector director;
     }

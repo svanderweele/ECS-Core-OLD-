@@ -1,6 +1,6 @@
 using Entitas;
 
-namespace ECS.AI.Sensors.Sight.Components{
+namespace Libraries.btcp.ECS.src.AI.Sensors.Sight.Components{
     public class SightDistanceComponent : IComponent
     {
         public float distance;

@@ -1,4 +1,9 @@
-﻿public sealed class AnimationLoopComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Core.Components
 {
-    //flag 
+    public sealed class AnimationLoopComponent : IComponent
+    {
+        //flag 
+    }
 }

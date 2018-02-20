@@ -1,25 +1,30 @@
 ﻿using Entitas;
 
-public class DestroyIfParentDestroyedSystem : IExecuteSystem
+
+
+namespace Libraries.btcp.ECS.src.Core.Parenting.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public DestroyIfParentDestroyedSystem (Contexts contexts)
+    public class DestroyIfParentDestroyedSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.Parent);
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public DestroyIfParentDestroyedSystem (Contexts contexts)
         {
-            var parentID = e.parent.value;
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.Parent);
+        }
 
-            if (m_contexts.game.GetEntityWithId(parentID) == null)
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
             {
-                e.isDestroyed = true;
+                var parentID = e.parent.value;
+
+                if (m_contexts.game.GetEntityWithId(parentID) == null)
+                {
+                    e.isDestroyed = true;
+                }
             }
         }
     }

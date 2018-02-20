@@ -1,26 +1,30 @@
 ﻿using Entitas;
-using UnityEngine;
 
-public class RemoveTargetSystem : IExecuteSystem
+
+
+namespace Libraries.btcp.ECS.src.AI.Sensors.Targeting.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public RemoveTargetSystem (Contexts contexts)
+    public class RemoveTargetSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.Target);
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public RemoveTargetSystem (Contexts contexts)
         {
-            var targetID = e.target.value;
-            var target = m_contexts.game.GetEntityWithId(targetID);
-            if (target == null)
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.Target);
+        }
+
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
             {
-                e.RemoveTarget();
+                var targetID = e.target.value;
+                var target = m_contexts.game.GetEntityWithId(targetID);
+                if (target == null)
+                {
+                    e.RemoveTarget();
+                }
             }
         }
     }

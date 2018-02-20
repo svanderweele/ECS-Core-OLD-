@@ -1,5 +1,10 @@
-﻿public sealed class HealthComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Combat.Health.Components
 {
-    public float value;
-    public float total;
+    public sealed class HealthComponent : IComponent
+    {
+        public float value;
+        public float total;
+    }
 }

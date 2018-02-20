@@ -1,8 +1,14 @@
-﻿public sealed class HealthSystems : Feature
+﻿
+using Libraries.btcp.ECS.src.Combat.Health.Logic;
+
+namespace Libraries.btcp.ECS.src.Combat.Health
 {
-    public HealthSystems(Contexts contexts) : base("Health Systems")
+    public sealed class HealthSystems : Feature
     {
-        Add(new RemoveDeadEntitiesSystem(contexts));
-        Add(new KillEntitiesSystem(contexts));
+        public HealthSystems(Contexts contexts) : base("Health Systems")
+        {
+            Add(new RemoveDeadEntitiesSystem(contexts));
+            Add(new KillEntitiesSystem(contexts));
+        }
     }
 }

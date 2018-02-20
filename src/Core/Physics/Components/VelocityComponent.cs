@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace ECS.Core.Movement.Physics.Components
+namespace Libraries.btcp.ECS.src.Core.Physics.Components
 {
     public class VelocityComponent : IComponent
     {

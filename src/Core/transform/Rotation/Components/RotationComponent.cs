@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using Entitas;
+using UnityEngine;
 
-public sealed class RotationComponent : Entitas.IComponent
+namespace Libraries.btcp.ECS.src.Core.transform.Rotation.Components
 {
-    public Vector3 value;
+    public sealed class RotationComponent : IComponent
+    {
+        public Vector3 value;
+    }
 }

@@ -1,7 +1,13 @@
-﻿public sealed class ManagementSystems : Feature
+﻿
+using Libraries.btcp.ECS.src.Core.Management.Logic;
+
+namespace Libraries.btcp.ECS.src.Core.Management
 {
-    public ManagementSystems(Contexts contexts) : base("Management Systems")
+    public sealed class ManagementSystems : Feature
     {
-        Add(new RemoveDestroyedEntitiesSystem(contexts));
+        public ManagementSystems(Contexts contexts) : base("Management Systems")
+        {
+            Add(new RemoveDestroyedEntitiesSystem(contexts));
+        }
     }
 }

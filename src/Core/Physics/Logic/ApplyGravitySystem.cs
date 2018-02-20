@@ -1,34 +1,39 @@
 ﻿using Entitas;
+
 using UnityEngine;
 
-public class ApplyGravitySystem : IExecuteSystem
+
+namespace Libraries.btcp.ECS.src.Core.Physics.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public ApplyGravitySystem (Contexts contexts)
+    public class ApplyGravitySystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.AffectedByGravity);
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public ApplyGravitySystem (Contexts contexts)
         {
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.AffectedByGravity);
+        }
 
-            if (e.isOnGround) continue;
-
-            var gravity = -.98f;
-            var steering = Vector2.zero;
-
-            if (e.hasSteering)
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
             {
-                steering = e.steering.value;
-            }
 
-            steering.y += gravity;
-            e.ReplaceSteering(steering);
+                if (e.isOnGround) continue;
+
+                var gravity = -.98f;
+                var steering = Vector2.zero;
+
+                if (e.hasSteering)
+                {
+                    steering = e.steering.value;
+                }
+
+                steering.y += gravity;
+                e.ReplaceSteering(steering);
+            }
         }
     }
 }

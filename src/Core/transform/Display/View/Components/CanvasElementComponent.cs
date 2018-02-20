@@ -1,4 +1,9 @@
-﻿public sealed class CanvasElementComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Components
 {
-    //flag
+    public sealed class CanvasElementComponent : IComponent
+    {
+        //flag
+    }
 }

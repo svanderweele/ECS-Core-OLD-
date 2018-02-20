@@ -1,4 +1,9 @@
-﻿public sealed class AffectedByGravityComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.Physics.Components
 {
-    //flag 
+    public sealed class AffectedByGravityComponent : IComponent
+    {
+        //flag 
+    }
 }

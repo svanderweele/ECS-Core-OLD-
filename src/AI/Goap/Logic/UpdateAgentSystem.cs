@@ -1,7 +1,9 @@
 ﻿using Entitas;
+
 using UnityEngine;
 
-namespace AI
+
+namespace Libraries.btcp.ECS.src.AI.Goap.Logic
 {
     public class UpdateAgentSystem : IExecuteSystem
     {

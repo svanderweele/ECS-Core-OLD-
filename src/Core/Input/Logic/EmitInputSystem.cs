@@ -1,7 +1,9 @@
 ﻿using Entitas;
+
+
 using UnityEngine;
 
-namespace Assets.Sources.Input.Logic
+namespace Libraries.btcp.ECS.src.Core.Input.Logic
 {
     public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ICleanupSystem
     {
@@ -19,7 +21,6 @@ namespace Assets.Sources.Input.Logic
             
             
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
-
             if (UnityEngine.Input.GetMouseButtonDown(0)) m_leftMouseEntity.ReplaceMouseDown(mousePosition);
             if (UnityEngine.Input.GetMouseButtonUp(0)) m_leftMouseEntity.ReplaceMouseUp(mousePosition);
 

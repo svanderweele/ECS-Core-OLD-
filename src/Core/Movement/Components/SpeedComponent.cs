@@ -1,4 +1,9 @@
-﻿public sealed class SpeedComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.Movement.Components
 {
-    public float value;
+    public sealed class SpeedComponent : IComponent
+    {
+        public float value;
+    }
 }

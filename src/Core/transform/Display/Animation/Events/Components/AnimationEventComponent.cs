@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Entitas;
+using UnityEngine;
 
-namespace ECS.Core.transform.Display.Animation.Events.Components
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.Components
 {
-    public sealed class AnimationEventComponent : Entitas.IComponent
+    public sealed class AnimationEventComponent : IComponent
     {
         public AnimationEvent evt;
     }

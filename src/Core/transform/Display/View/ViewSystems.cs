@@ -1,6 +1,7 @@
-﻿using ECS.Core.transform.Display.View.Logic;
+﻿
+using Libraries.btcp.ECS.src.Core.transform.Display.View.Logic;
 
-namespace ECS.Core.transform.Display.View
+namespace Libraries.btcp.ECS.src.Core.transform.Display.View
 {
     public sealed class ViewSystems : Feature
     {

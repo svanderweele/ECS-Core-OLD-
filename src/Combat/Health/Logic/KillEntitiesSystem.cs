@@ -1,43 +1,48 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+
 using UnityEngine;
 
-public class KillEntitiesSystem : ReactiveSystem<GameEntity>
+
+namespace Libraries.btcp.ECS.src.Combat.Health.Logic
 {
-    private Contexts m_contexts;
-
-    public KillEntitiesSystem(Contexts contexts) : base(contexts.game)
+    public class KillEntitiesSystem : ReactiveSystem<GameEntity>
     {
-        m_contexts = contexts;
-    }
+        private Contexts m_contexts;
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        return context.CreateCollector(GameMatcher.Health);
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.hasHealth && entity.isDead == false;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach (var e in entities)
+        public KillEntitiesSystem(Contexts contexts) : base(contexts.game)
         {
-            var currentHp = e.health.value;
+            m_contexts = contexts;
+        }
 
-            if (currentHp <= 0)
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {
+            return context.CreateCollector(GameMatcher.Health);
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.hasHealth && entity.isDead == false;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach (var e in entities)
             {
-                if (e.hasAnimationDirector)
-                {
-                    var clip = e.animationDirector.director.CreateAnimationClip("miner_grunt_death_regular",
-                        new List<AnimationEvent>());
-                    e.animationDirector.director.AddAnimation("miner_grunt_death_regular", clip);
-                    e.animationDirector.director.PlayAnim("miner_grunt_death_regular", true, false);
-                }
+                var currentHp = e.health.value;
 
-                e.isDead = true;
+                if (currentHp <= 0)
+                {
+                    if (e.hasAnimationDirector)
+                    {
+                        var clip = e.animationDirector.director.CreateAnimationClip("miner_grunt_death_regular",
+                            new List<AnimationEvent>());
+                        e.animationDirector.director.AddAnimation("miner_grunt_death_regular", clip);
+                        e.animationDirector.director.PlayAnim("miner_grunt_death_regular", true, false);
+                    }
+
+                    e.isDead = true;
+                }
             }
         }
     }

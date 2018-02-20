@@ -1,7 +1,8 @@
-﻿using Entitas;using Entitas;
-using UnityEngine;
+﻿using Entitas;
 
-namespace AI
+
+
+namespace Libraries.btcp.ECS.src.AI.Goap.Logic
 {
     public class UpdateAgentCurrentActionSystem : IExecuteSystem
     {

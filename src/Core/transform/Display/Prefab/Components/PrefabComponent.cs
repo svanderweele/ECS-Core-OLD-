@@ -1,6 +1,6 @@
 ﻿using Entitas;
 
-namespace ECS.Core.transform.Display.Prefab.Components
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Prefab.Components
 {
     public class PrefabComponent : IComponent
     {

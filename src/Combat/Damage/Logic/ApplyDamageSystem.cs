@@ -1,55 +1,60 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+
 using UnityEngine;
 
-public class ApplyDamageSystem : ReactiveSystem<GameEntity>
+
+namespace Libraries.btcp.ECS.src.Combat.Damage.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_damageListeners;
-
-    public ApplyDamageSystem(Contexts contexts) : base(contexts.game)
+    public class ApplyDamageSystem : ReactiveSystem<GameEntity>
     {
-        m_contexts = contexts;
-        m_damageListeners = m_contexts.game.GetGroup(GameMatcher.Listener_EntityDamaged);
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_damageListeners;
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        return context.CreateCollector(GameMatcher.TakeDamage.Added());
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.hasTakeDamage && entity.hasHealth;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach (var e in entities)
+        public ApplyDamageSystem(Contexts contexts) : base(contexts.game)
         {
-            var attacks = e.takeDamage.attacks;
-            var totalDamage = 0f;
+            m_contexts = contexts;
+            m_damageListeners = m_contexts.game.GetGroup(GameMatcher.Listener_EntityDamaged);
+        }
 
-            foreach (var atk in attacks)
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {
+            return context.CreateCollector(GameMatcher.TakeDamage.Added());
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.hasTakeDamage && entity.hasHealth;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach (var e in entities)
             {
-                totalDamage += atk.Value;
-            }
+                var attacks = e.takeDamage.attacks;
+                var totalDamage = 0f;
 
-            var currentHp = e.health.value;
-            currentHp -= totalDamage;
-            e.ReplaceHealth(currentHp, e.health.total);
-            e.RemoveTakeDamage();
-
-            //TODO : ShakeHelpers?
-            e.AddShake(new Vector2(.05f, .05f));
-            e.AddShakeDuration(.25f);
-
-
-            foreach (var atk in attacks)
-            {
-                foreach (var listener in m_damageListeners.GetEntities())
+                foreach (var atk in attacks)
                 {
-                    listener.listener_EntityDamaged.listener.OnEntityDamaged(e.id.value, atk.Key, totalDamage);
+                    totalDamage += atk.Value;
+                }
+
+                var currentHp = e.health.value;
+                currentHp -= totalDamage;
+                e.ReplaceHealth(currentHp, e.health.total);
+                e.RemoveTakeDamage();
+
+                //TODO : ShakeHelpers?
+                e.AddShake(new Vector2(.05f, .05f));
+                e.AddShakeDuration(.25f);
+
+
+                foreach (var atk in attacks)
+                {
+                    foreach (var listener in m_damageListeners.GetEntities())
+                    {
+                        listener.listener_EntityDamaged.listener.OnEntityDamaged(e.id.value, atk.Key, totalDamage);
+                    }
                 }
             }
         }

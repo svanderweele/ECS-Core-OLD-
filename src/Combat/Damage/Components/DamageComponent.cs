@@ -1,4 +1,9 @@
-﻿public sealed class DamageComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Combat.Damage.Components
 {
-    public float value;
+    public sealed class DamageComponent : IComponent
+    {
+        public float value;
+    }
 }

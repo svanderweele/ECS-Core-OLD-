@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using Entitas;
+using UnityEngine;
 
-public sealed class PositionOffsetComponent : Entitas.IComponent
+namespace Libraries.btcp.ECS.src.Core.transform.Position.Components
 {
-    public Vector2 value;
+    public sealed class PositionOffsetComponent : IComponent
+    {
+        public Vector2 value;
+    }
 }

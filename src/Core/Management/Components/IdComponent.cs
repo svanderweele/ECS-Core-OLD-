@@ -1,7 +1,8 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-namespace ECS.Core.Management.Components
+
+namespace Libraries.btcp.ECS.src.Core.Management.Components
 {
     [Game]
     public class IdComponent : IComponent

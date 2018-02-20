@@ -1,6 +1,10 @@
-﻿using ECS.AI.Goap;
+﻿using Entitas;
+using Libraries.btcp.src.Extensions;
 
-public sealed class GoapAgentComponent : Entitas.IComponent
+namespace Libraries.btcp.ECS.src.AI.Goap.Components
 {
-    public EntityGoapAgent agent;
+    public sealed class GoapAgentComponent : IComponent
+    {
+        public EntityGoapAgent agent;
+    }
 }

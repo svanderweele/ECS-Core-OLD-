@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ECS.AI.Sensors.Sight
+namespace Libraries.btcp.ECS.src.AI.Sensors.Sight
 {
     public static class SightHelpers
     {

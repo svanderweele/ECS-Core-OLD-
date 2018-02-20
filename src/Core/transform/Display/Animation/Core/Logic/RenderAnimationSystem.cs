@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace ECS.Core.transform.Display.Animation.Core.Logic
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Core.Logic
 {
     public class RenderAnimationSystem : ReactiveSystem<GameEntity>
     {
@@ -39,7 +41,7 @@ namespace ECS.Core.transform.Display.Animation.Core.Logic
                 var animationDirector = e.animationDirector.director;
 
                 var animation = go.GetComponent<UnityEngine.Animation>();
-                Assert.IsNotNull(animation, "Entity does not have an animator, and you're trying to animate");
+                Assert.IsNotNull<UnityEngine.Animation>(animation, "Entity does not have an animator, and you're trying to animate");
 
                 bool playAnimation = true;
 

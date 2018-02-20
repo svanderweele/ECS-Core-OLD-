@@ -1,22 +1,26 @@
 ﻿using Entitas;
-using UnityEngine;
 
-public class RemoveDestroyedEntitiesSystem : IExecuteSystem
+
+
+namespace Libraries.btcp.ECS.src.Core.Management.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public RemoveDestroyedEntitiesSystem (Contexts contexts)
+    public class RemoveDestroyedEntitiesSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.Destroyed);
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public RemoveDestroyedEntitiesSystem (Contexts contexts)
         {
-           e.Destroy();
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.Destroyed);
+        }
+
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
+            {
+                e.Destroy();
+            }
         }
     }
 }

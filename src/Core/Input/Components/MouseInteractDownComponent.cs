@@ -1,6 +1,7 @@
 ﻿using Entitas;
 
-namespace Assets.Sources.Input.Components
+
+namespace Libraries.btcp.ECS.src.Core.Input.Components
 {
     [Game]
     public class MouseInteractDownComponent : IComponent

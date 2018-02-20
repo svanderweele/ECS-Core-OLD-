@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-namespace ECS.AI.Sensors.Targeting
+
+
+namespace Libraries.btcp.ECS.src.AI.Sensors.Targeting
 {
     public static class TargetingHelpers
     {

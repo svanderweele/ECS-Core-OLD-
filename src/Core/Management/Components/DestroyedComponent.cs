@@ -1,4 +1,9 @@
-﻿public sealed class DestroyedComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.Management.Components
 {
-    //flag 
+    public sealed class DestroyedComponent : IComponent
+    {
+        //flag 
+    }
 }

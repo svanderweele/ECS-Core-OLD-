@@ -1,4 +1,9 @@
-﻿public sealed class CurrentAnimationComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Core.Components
 {
-    public string name;
+    public sealed class CurrentAnimationComponent : IComponent
+    {
+        public string name;
+    }
 }

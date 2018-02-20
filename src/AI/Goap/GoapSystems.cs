@@ -1,13 +1,16 @@
-﻿using AI;
+﻿using Libraries.btcp.ECS.src.AI.Goap.Logic;
 
-public sealed class GoapSystems : Feature
+namespace Libraries.btcp.ECS.src.AI.Goap
 {
-    public GoapSystems(Contexts contexts) : base("GOAP Systems")
+    public sealed class GoapSystems : Feature
     {
-        Add(new EnableAgentSystem(contexts));
-        Add(new DisableAgentSystem(contexts));
-        Add(new UpdateAgentSystem(contexts));
-        Add(new IterateAgentActionsSystem(contexts));
-        Add(new UpdateAgentCurrentActionSystem(contexts));
+        public GoapSystems(Contexts contexts) : base("GOAP Systems")
+        {
+            Add(new EnableAgentSystem(contexts));
+            Add(new DisableAgentSystem(contexts));
+            Add(new UpdateAgentSystem(contexts));
+            Add(new IterateAgentActionsSystem(contexts));
+            Add(new UpdateAgentCurrentActionSystem(contexts));
+        }
     }
 }

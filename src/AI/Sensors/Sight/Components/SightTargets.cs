@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
+using Entitas;
 
-public sealed class SightTargets : Entitas.IComponent
+namespace Libraries.btcp.ECS.src.AI.Sensors.Sight.Components
 {
-    public List<int> targets;
+    public sealed class SightTargets : IComponent
+    {
+        public List<int> targets;
+    }
 }

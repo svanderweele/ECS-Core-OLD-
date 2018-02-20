@@ -1,27 +1,31 @@
 ﻿using Entitas;
+
 using UnityEngine;
 
-public class ApplyVelocitySystem : IExecuteSystem
+namespace Libraries.btcp.ECS.src.Core.Physics.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public ApplyVelocitySystem(Contexts contexts)
+    public class ApplyVelocitySystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Velocity));
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public ApplyVelocitySystem(Contexts contexts)
         {
-            var vel = e.velocity.value;
-             var pos = e.position.value;
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Velocity));
+        }
+
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
+            {
+                var vel = e.velocity.value;
+                var pos = e.position.value;
             
-            pos += vel * Time.deltaTime;
-            e.ReplacePosition(pos);
+                pos += vel * Time.deltaTime;
+                e.ReplacePosition(pos);
             
+            }
         }
     }
 }

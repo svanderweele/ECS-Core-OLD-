@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-namespace unity.Helpers.Animations
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.unity
 {
     public class AnimationEventBroadcaster : MonoBehaviour
     {

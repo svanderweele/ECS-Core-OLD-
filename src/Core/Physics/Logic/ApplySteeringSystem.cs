@@ -1,33 +1,38 @@
 ﻿using Entitas;
+
 using UnityEngine;
 
-public class ApplySteeringSystem : IExecuteSystem
+
+namespace Libraries.btcp.ECS.src.Core.Physics.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public ApplySteeringSystem (Contexts contexts)
+    public class ApplySteeringSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.Steering);
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public ApplySteeringSystem (Contexts contexts)
         {
-            var steering = e.steering.value;
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.Steering);
+        }
 
-            var velocity = Vector2.zero;
-
-            if (e.hasVelocity)
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
             {
-                velocity = e.velocity.value;
-            }
+                var steering = e.steering.value;
 
-            velocity += steering;
-            e.RemoveSteering();
-            e.ReplaceVelocity(velocity);
+                var velocity = Vector2.zero;
+
+                if (e.hasVelocity)
+                {
+                    velocity = e.velocity.value;
+                }
+
+                velocity += steering;
+                e.RemoveSteering();
+                e.ReplaceVelocity(velocity);
+            }
         }
     }
 }

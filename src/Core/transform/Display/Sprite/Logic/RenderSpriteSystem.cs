@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace ECS.Core.transform.Display.Sprite.Logic
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Sprite.Logic
 {
     public class RenderSpriteSystem : ReactiveSystem<GameEntity>
     {

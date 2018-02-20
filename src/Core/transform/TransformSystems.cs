@@ -1,7 +1,9 @@
-﻿using ECS.Core.transform.Display;
-using ECS.Core.transform.Position;
+﻿
+using Libraries.btcp.ECS.src.Core.transform.Display;
+using Libraries.btcp.ECS.src.Core.transform.Position;
+using Libraries.btcp.ECS.src.Core.transform.Rotation.Logic;
 
-namespace ECS.Core.transform
+namespace Libraries.btcp.ECS.src.Core.transform
 {
     public sealed class TransformSystems : Feature
     {

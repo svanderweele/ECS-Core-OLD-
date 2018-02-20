@@ -1,34 +1,39 @@
 ﻿using Entitas;
+
 using UnityEngine;
 
-public class SetChildParentSystem : IExecuteSystem
+
+namespace Libraries.btcp.ECS.src.Core.Parenting.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public SetChildParentSystem(Contexts contexts)
+    public class SetChildParentSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.Parent);
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public SetChildParentSystem(Contexts contexts)
         {
-            var parentID = e.parent.value;
-            var parent = m_contexts.game.GetEntityWithId(parentID);
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.Parent);
+        }
 
-            GameObject go = null;
-
-            if (e.hasView)
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
             {
-                go = e.view.gameObject;
+                var parentID = e.parent.value;
+                var parent = m_contexts.game.GetEntityWithId(parentID);
 
-                if (parent.hasView)
+                GameObject go = null;
+
+                if (e.hasView)
                 {
-                    var parentGO = parent.view.gameObject;
-                    go.transform.SetParent(parentGO.transform, false);
+                    go = e.view.gameObject;
+
+                    if (parent.hasView)
+                    {
+                        var parentGO = parent.view.gameObject;
+                        go.transform.SetParent(parentGO.transform, false);
+                    }
                 }
             }
         }

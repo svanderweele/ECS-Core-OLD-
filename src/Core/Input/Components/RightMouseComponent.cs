@@ -1,7 +1,8 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-namespace Assets.Sources.Input.Components
+
+namespace Libraries.btcp.ECS.src.Core.Input.Components
 {
     [Input]
     [Unique]

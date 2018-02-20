@@ -1,23 +1,26 @@
 ﻿using Entitas;
-using UnityEngine;
 
-public class RotationSystem : IExecuteSystem
+
+namespace Libraries.btcp.ECS.src.Core.transform.Rotation.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public RotationSystem (Contexts contexts)
+    public class RotationSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Rotation, GameMatcher.View));
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public RotationSystem (Contexts contexts)
         {
-            var go = e.view.gameObject;
-            go.transform.eulerAngles = e.rotation.value;
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Rotation, GameMatcher.View));
+        }
+
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
+            {
+                var go = e.view.gameObject;
+                go.transform.eulerAngles = e.rotation.value;
+            }
         }
     }
 }

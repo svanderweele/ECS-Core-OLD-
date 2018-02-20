@@ -1,22 +1,25 @@
 ﻿using Entitas;
-using UnityEngine;
 
-public class RemoveDeadEntitiesSystem : IExecuteSystem
+
+namespace Libraries.btcp.ECS.src.Combat.Health.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public RemoveDeadEntitiesSystem (Contexts contexts)
+    public class RemoveDeadEntitiesSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Dead, GameMatcher.RemovedWhenDead));
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public RemoveDeadEntitiesSystem (Contexts contexts)
         {
-            e.isDestroyed = true;
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Dead, GameMatcher.RemovedWhenDead));
+        }
+
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
+            {
+                e.isDestroyed = true;
+            }
         }
     }
 }

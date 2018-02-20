@@ -1,35 +1,39 @@
 ﻿using Entitas;
+
 using UnityEngine;
 
-public class LookAtTargetSystem : IExecuteSystem
+namespace Libraries.btcp.ECS.src.AI.Sensors.Sight.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public LookAtTargetSystem (Contexts contexts)
+    public class LookAtTargetSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.LookingAtTarget, GameMatcher.Target));
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public LookAtTargetSystem (Contexts contexts)
         {
-            var target = m_contexts.game.GetEntityWithId(e.target.value);
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.LookingAtTarget, GameMatcher.Target));
+        }
 
-            var position = e.position.value;
-            var targetPosition = target.position.value;
-            var diff = targetPosition - position;
-            var rotation = Vector3.zero;
-
-            if (e.hasRotation)
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
             {
-                rotation = e.rotation.value;
-            }
+                var target = m_contexts.game.GetEntityWithId(e.target.value);
 
-            rotation.z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-            e.ReplaceRotation(rotation);
+                var position = e.position.value;
+                var targetPosition = target.position.value;
+                var diff = targetPosition - position;
+                var rotation = Vector3.zero;
+
+                if (e.hasRotation)
+                {
+                    rotation = e.rotation.value;
+                }
+
+                rotation.z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+                e.ReplaceRotation(rotation);
+            }
         }
     }
 }

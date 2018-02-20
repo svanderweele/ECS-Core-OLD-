@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-namespace Assets.Sources.Transform.View.Components
+namespace Libraries.btcp.ECS.src.Core.Input.Components
 {
     [Event((true))]
     public class MouseListenerComponent : IComponent

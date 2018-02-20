@@ -1,6 +1,7 @@
-﻿using ECS.Core.transform.Display.Sprite.Logic;
+﻿
+using Libraries.btcp.ECS.src.Core.transform.Display.Sprite.Logic;
 
-namespace ECS.Core.transform.Display.Sprite
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Sprite
 {
     public sealed class SpriteSystems : Feature
     {

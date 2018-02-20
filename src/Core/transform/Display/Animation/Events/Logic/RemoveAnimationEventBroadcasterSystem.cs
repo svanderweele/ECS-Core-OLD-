@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-using unity.Helpers.Animations;
+
+using Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.unity;
 using UnityEngine;
 
-namespace ECS.Core.transform.Display.Animation.Events.Logic
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.Logic
 {
     public class RemoveAnimationEventBroadcasterSystem : ReactiveSystem<GameEntity>
     {

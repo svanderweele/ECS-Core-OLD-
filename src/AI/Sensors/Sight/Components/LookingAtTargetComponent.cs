@@ -1,4 +1,9 @@
-public sealed class LookingAtTargetComponent : Entitas.IComponent
+using Entitas;
+
+namespace Libraries.btcp.ECS.src.AI.Sensors.Sight.Components
 {
-    //flag 
+    public sealed class LookingAtTargetComponent : IComponent
+    {
+        //flag 
+    }
 }

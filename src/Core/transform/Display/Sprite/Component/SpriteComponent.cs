@@ -1,6 +1,6 @@
 using Entitas;
 
-namespace ECS.Core.transform.Display.Sprite.Component
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Sprite.Component
 {
     public class SpriteComponent : IComponent
     {

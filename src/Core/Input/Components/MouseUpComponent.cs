@@ -1,7 +1,8 @@
 ﻿using Entitas;
+
 using UnityEngine;
 
-namespace Assets.Sources.Input.Components
+namespace Libraries.btcp.ECS.src.Core.Input.Components
 {
     [Input]
     public class MouseUpComponent : IComponent

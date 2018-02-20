@@ -1,8 +1,7 @@
-﻿using Assets.Sources.Gameplay.Mining.Ore.Systems;
-using Assets.Sources.Input.Logic;
-using UnityEngine;
+﻿
+using Libraries.btcp.ECS.src.Core.Input.Logic;
 
-namespace Assets.Sources.Input
+namespace Libraries.btcp.ECS.src.Core.Input
 {
     public class InputSystems : Feature
     {

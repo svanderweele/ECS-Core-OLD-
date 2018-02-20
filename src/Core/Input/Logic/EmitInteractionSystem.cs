@@ -3,7 +3,7 @@ using System.Linq;
 using Entitas;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Mining.Ore.Systems
+namespace Libraries.btcp.ECS.src.Core.Input.Logic
 {
     public class EmitInteractionSystem : ReactiveSystem<InputEntity>, ICleanupSystem
     {
@@ -43,8 +43,9 @@ namespace Assets.Sources.Gameplay.Mining.Ore.Systems
                 var isMouseDown = mouseEntity.hasMouseDown;
                 var isMouseUp = mouseEntity.hasMouseUp;
                 var isMouseMove = mouseEntity.hasMousePosition;
-                
-                var ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(mouseEntity.mousePosition.position));
+
+                var ray = Camera.main.ScreenPointToRay(
+                    Camera.main.WorldToScreenPoint(mouseEntity.mousePosition.position));
                 var hit = Physics2D.Raycast(ray.origin, ray.direction, MAX_RAY_DISTANCE);
                 if (hit.collider != null)
                 {

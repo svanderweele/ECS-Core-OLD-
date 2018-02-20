@@ -1,8 +1,15 @@
-﻿public sealed class AISystems : Feature
+﻿using Libraries.btcp.ECS.src.AI.Goap;
+using Libraries.btcp.ECS.src.AI.Sensors;
+
+namespace Libraries.btcp.ECS.src.AI
 {
-    public AISystems(Contexts contexts) : base("AI Systems")
+    // ReSharper disable once InconsistentNaming
+    public sealed class AISystems : Feature
     {
-        Add(new SensorSystems(contexts));
-        Add(new GoapSystems(contexts));
+        public AISystems(Contexts contexts) : base("AI Systems")
+        {
+            Add(new SensorSystems(contexts));
+            Add(new GoapSystems(contexts));
+        }
     }
 }

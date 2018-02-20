@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using Entitas;
 
-public sealed class FallToGroundComponent : Entitas.IComponent
+namespace Libraries.btcp.ECS.src.Core.Physics.Components
 {
-    public float groundY;
+    public sealed class FallToGroundComponent : IComponent
+    {
+        public float groundY;
+    }
 }

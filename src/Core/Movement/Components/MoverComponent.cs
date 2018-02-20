@@ -1,4 +1,9 @@
-﻿public sealed class MoverComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.Movement.Components
 {
-    //flag 
+    public sealed class MoverComponent : IComponent
+    {
+        //flag 
+    }
 }

@@ -1,8 +1,9 @@
-﻿using ECS.Core.transform.Display.Animation;
-using ECS.Core.transform.Display.Sprite;
-using ECS.Core.transform.Display.View;
+﻿
+using Libraries.btcp.ECS.src.Core.transform.Display.Animation;
+using Libraries.btcp.ECS.src.Core.transform.Display.Sprite;
+using Libraries.btcp.ECS.src.Core.transform.Display.View;
 
-namespace ECS.Core.transform.Display
+namespace Libraries.btcp.ECS.src.Core.transform.Display
 {
     public sealed class DisplaySystems : Feature
     {

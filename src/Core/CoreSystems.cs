@@ -1,26 +1,37 @@
-﻿using Assets.Sources.Gameplay.Mining;
-using Assets.Sources.Input;
-using ECS.Core.Physics;
-using ECS.Core.transform;
+﻿
+using Libraries.btcp.ECS.src.AI;
+using Libraries.btcp.ECS.src.Combat;
+using Libraries.btcp.ECS.src.Core.Input;
+using Libraries.btcp.ECS.src.Core.Management;
+using Libraries.btcp.ECS.src.Core.Movement;
+using Libraries.btcp.ECS.src.Core.Parenting;
+using Libraries.btcp.ECS.src.Core.Physics;
+using Libraries.btcp.ECS.src.Core.transform;
+using Libraries.btcp.ECS.src.Core.transform.Position.Shake;
+using Libraries.btcp.ECS.src.Items;
+using Libraries.btcp.RPG_Core.src.Directors.Combat.ECS;
 
-public sealed class CoreSystems : Feature
+namespace Libraries.btcp.ECS.src.Core
 {
-    public CoreSystems(Contexts contexts) : base("Core Systems")
+    public sealed class CoreSystems : Feature
     {
-        //TODO : Organise systems better
-        Add(new ParentingSystems(contexts));
-        Add(new InputSystems(contexts));
-        Add(new TransformSystems(contexts));
-        Add(new ManagementSystems(contexts));
-        Add(new MovementSystems(contexts));
-        Add(new PhysicsSystems(contexts));
+        public CoreSystems(Contexts contexts) : base("Core Systems")
+        {
+            //TODO : Organise systems better
+            Add(new ParentingSystems(contexts));
+            Add(new InputSystems(contexts));
+            Add(new TransformSystems(contexts));
+            Add(new ManagementSystems(contexts));
+            Add(new MovementSystems(contexts));
+            Add(new PhysicsSystems(contexts));
 
-        //TODO: Should be better named
-        Add(new CombatDirectorSystems(contexts));
-        Add(new CombatSystems(contexts));
-        Add(new ItemSystems(contexts));
-        Add(new AISystems(contexts));
+            //TODO: Should be better named
+            Add(new CombatDirectorSystems(contexts));
+            Add(new CombatSystems(contexts));
+            Add(new ItemSystems(contexts));
+            Add(new AISystems(contexts));
         
-        Add(new ShakeSystems(contexts));
+            Add(new EffectSystems(contexts));
+        }
     }
 }

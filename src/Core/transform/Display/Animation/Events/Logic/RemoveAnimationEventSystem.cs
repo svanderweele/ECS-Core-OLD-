@@ -1,7 +1,8 @@
 ﻿using Entitas;
-using UnityEngine;
 
-namespace ECS.Core.transform.Display.Animation.Events.Logic
+
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.Logic
 {
     public class RemoveAnimationEventSystem : ICleanupSystem
     {

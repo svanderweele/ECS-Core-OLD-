@@ -1,7 +1,7 @@
 using Entitas;
 using UnityEngine;
 
-namespace ECS.Core.transform.Position.Components{
+namespace Libraries.btcp.ECS.src.Core.transform.Position.Components{
     public class PositionComponent : IComponent {	
         public Vector2 value;
     }

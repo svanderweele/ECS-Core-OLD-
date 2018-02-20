@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using Entitas;
+using UnityEngine;
 
-public sealed class MoveComponent : Entitas.IComponent
+namespace Libraries.btcp.ECS.src.Core.Movement.Components
 {
-    public Vector2 value;
+    public sealed class MoveComponent : IComponent
+    {
+        public Vector2 value;
+    }
 }

@@ -1,6 +1,8 @@
-﻿namespace ECS.AI.Sensors.Targeting.Components
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.AI.Sensors.Targeting.Components
 {
-    public sealed class TargetComponent : Entitas.IComponent
+    public sealed class TargetComponent : IComponent
     {
         public int value;
     }

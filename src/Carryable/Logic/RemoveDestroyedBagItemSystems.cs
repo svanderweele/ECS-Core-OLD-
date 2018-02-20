@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-namespace Assets.Sources.Management.Destruction.Logic
+
+
+namespace Libraries.btcp.ECS.src.Items.Logic
 {
     public class RemoveDestroyedBagItemSystem : ReactiveSystem<GameEntity>
     {

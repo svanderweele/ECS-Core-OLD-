@@ -1,6 +1,7 @@
-﻿using ECS.Core.Physics.Logic;
+﻿
+using Libraries.btcp.ECS.src.Core.Physics.Logic;
 
-namespace ECS.Core.Physics
+namespace Libraries.btcp.ECS.src.Core.Physics
 {
     public sealed class PhysicsSystems : Feature
     {

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-using unity.Helpers.Animations;
 
-namespace ECS.Core.transform.Display.Animation.Events.Logic
+using Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.unity;
+
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.Logic
 {
     public class AddAnimationEventBroadcasterSystem : ReactiveSystem<GameEntity>
     {

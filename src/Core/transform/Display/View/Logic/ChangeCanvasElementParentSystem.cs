@@ -1,34 +1,39 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+
 using UnityEngine;
 
-public class ChangeCanvasElementParentSystem : ReactiveSystem<GameEntity>
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
 {
-    private Contexts m_contexts;
-    private Transform m_canvas;
-
-    public ChangeCanvasElementParentSystem (Contexts contexts) : base(contexts.game)
+    public class ChangeCanvasElementParentSystem : ReactiveSystem<GameEntity>
     {
-        m_contexts = contexts;
-        m_canvas = GameObject.Instantiate(Resources.Load<Canvas>("Prefabs/UI/GameCanvas")).transform.Find("Entities");
-    }
+        private Contexts m_contexts;
+        private Transform m_canvas;
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {   
-        return context.CreateCollector(GameMatcher.CanvasElement.Added(), GameMatcher.View.Added());
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.hasView && entity.isCanvasElement;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach(var e in entities)
+        public ChangeCanvasElementParentSystem (Contexts contexts) : base(contexts.game)
         {
-            var go = e.view.gameObject;
-            go.transform.SetParent(m_canvas, false);
+            m_contexts = contexts;
+            m_canvas = GameObject.Instantiate(Resources.Load<Canvas>("Prefabs/UI/GameCanvas")).transform.Find("Entities");
+        }
+
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {   
+            return context.CreateCollector(GameMatcher.CanvasElement.Added(), GameMatcher.View.Added());
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.hasView && entity.isCanvasElement;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach(var e in entities)
+            {
+                var go = e.view.gameObject;
+                go.transform.SetParent(m_canvas, false);
+            }
         }
     }
 }

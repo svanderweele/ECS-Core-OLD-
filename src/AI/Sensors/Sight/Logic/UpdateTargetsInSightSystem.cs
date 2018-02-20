@@ -1,56 +1,60 @@
 using System.Collections.Generic;
 using Entitas;
 
-public class UpdateTargetsInSightSystem : IExecuteSystem
+
+namespace Libraries.btcp.ECS.src.AI.Sensors.Sight.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_sightEntities;
-    private IGroup<GameEntity> m_seeableEntities;
-
-
-    public UpdateTargetsInSightSystem (Contexts contexts)
+    public class UpdateTargetsInSightSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_sightEntities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.SightDistance, GameMatcher.Seeing, GameMatcher.Position));
-        m_seeableEntities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.View, GameMatcher.Position));
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_sightEntities;
+        private IGroup<GameEntity> m_seeableEntities;
 
-    public void Execute()
-    {
-        foreach (var e in m_sightEntities.GetEntities())
+
+        public UpdateTargetsInSightSystem (Contexts contexts)
         {
-            var position = e.position.value;
-            var seeDistance = e.sightDistance.distance;
-            var targets = new List<int>();
+            m_contexts = contexts;
+            m_sightEntities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.SightDistance, GameMatcher.Seeing, GameMatcher.Position));
+            m_seeableEntities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.View, GameMatcher.Position));
+        }
 
-            foreach (var target in m_seeableEntities.GetEntities())
+        public void Execute()
+        {
+            foreach (var e in m_sightEntities.GetEntities())
             {
-                if (e.id.value == target.id.value)
+                var position = e.position.value;
+                var seeDistance = e.sightDistance.distance;
+                var targets = new List<int>();
+
+                foreach (var target in m_seeableEntities.GetEntities())
                 {
-                    continue;
-                }
+                    if (e.id.value == target.id.value)
+                    {
+                        continue;
+                    }
                 
-                var targetPosition = target.position.value;
+                    var targetPosition = target.position.value;
                 
-                var diff = (targetPosition - position).magnitude;
+                    var diff = (targetPosition - position).magnitude;
 
-                if (diff <= seeDistance)
-                {
-                    targets.Add(target.id.value);
+                    if (diff <= seeDistance)
+                    {
+                        targets.Add(target.id.value);
+                    }
                 }
-            }
 
 
-            if (targets.Count == 0)
-            {
-                if (e.hasSightTargets)
+                if (targets.Count == 0)
                 {
-                    e.RemoveSightTargets();
+                    if (e.hasSightTargets)
+                    {
+                        e.RemoveSightTargets();
+                    }
                 }
-            }
-            else
-            {
-                e.ReplaceSightTargets(targets);
+                else
+                {
+                    e.ReplaceSightTargets(targets);
+                }
             }
         }
     }

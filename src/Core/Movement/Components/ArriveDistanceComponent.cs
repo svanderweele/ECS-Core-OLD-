@@ -1,4 +1,9 @@
-﻿public sealed class ArriveDistanceComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.Movement.Components
 {
-    public float value;
+    public sealed class ArriveDistanceComponent : IComponent
+    {
+        public float value;
+    }
 }

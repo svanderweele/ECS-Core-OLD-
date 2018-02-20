@@ -1,6 +1,8 @@
-﻿namespace ECS.Core.transform.Display.Animation.Core.Components
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Core.Components
 {
-    public sealed class NextAnimationPatientComponent : Entitas.IComponent
+    public sealed class NextAnimationPatientComponent : IComponent
     {
         //flag 
     }

@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace ECS.Core.transform.Display.View.Components
+namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Components
 {
     public class GameObjectComponent : IComponent
     {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Entitas;
+﻿using Entitas;
+
 using UnityEngine;
 
-namespace Assets.Sources.Transform.Movement.Logic
+namespace Libraries.btcp.ECS.src.Core.Movement.Logic
 {
     public class MoveSystem : IExecuteSystem, ICleanupSystem
     {

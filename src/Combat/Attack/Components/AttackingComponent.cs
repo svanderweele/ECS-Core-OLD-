@@ -1,4 +1,9 @@
-﻿public sealed class AttackingComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Combat.Attack.Components
 {
-    //flag
+    public sealed class AttackingComponent : IComponent
+    {
+        //flag
+    }
 }

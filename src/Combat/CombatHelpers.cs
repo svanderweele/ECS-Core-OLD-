@@ -1,4 +1,6 @@
-﻿namespace ECS.Combat
+﻿
+
+namespace Libraries.btcp.ECS.src.Combat
 {
     public static class CombatHelpers
     {

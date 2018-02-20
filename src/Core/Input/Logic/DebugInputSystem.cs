@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Mining.Ore.Systems
+
+namespace Libraries.btcp.ECS.src.Core.Input.Logic
 {
     public class DebugInputSystem : ReactiveSystem<GameEntity>
     {

@@ -1,31 +1,36 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+
 using UnityEngine;
 
-public class AddPositionSystem : ReactiveSystem<GameEntity>
+
+namespace Libraries.btcp.ECS.src.Core.transform.Position.Logic
 {
-    private Contexts m_contexts;
-
-    public AddPositionSystem (Contexts contexts) : base(contexts.game)
+    public class AddPositionSystem : ReactiveSystem<GameEntity>
     {
-        m_contexts = contexts;
-    }
+        private Contexts m_contexts;
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        return context.CreateCollector(GameMatcher.View.Added());
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.hasView && entity.hasPosition == false;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach(var e in entities)
+        public AddPositionSystem (Contexts contexts) : base(contexts.game)
         {
-            e.AddPosition(Vector2.zero);
+            m_contexts = contexts;
+        }
+
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {
+            return context.CreateCollector(GameMatcher.View.Added());
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.hasView && entity.hasPosition == false;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach(var e in entities)
+            {
+                e.AddPosition(Vector2.zero);
+            }
         }
     }
 }

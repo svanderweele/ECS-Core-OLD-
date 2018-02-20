@@ -1,6 +1,6 @@
 ﻿using Entitas;
 
-namespace ECS.Core.transform.Display.Animation.Core.Components
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation.Core.Components
 {
     public class AnimatorControllerComponent : IComponent
     {

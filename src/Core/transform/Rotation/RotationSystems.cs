@@ -1,7 +1,13 @@
-﻿public sealed class RotationSystems : Feature
+﻿
+using Libraries.btcp.ECS.src.Core.transform.Rotation.Logic;
+
+namespace Libraries.btcp.ECS.src.Core.transform.Rotation
 {
-    public RotationSystems(Contexts contexts) : base("Rotation Systems")
+    public sealed class RotationSystems : Feature
     {
-        Add(new RotationSystem(contexts));
+        public RotationSystems(Contexts contexts) : base("Rotation Systems")
+        {
+            Add(new RotationSystem(contexts));
+        }
     }
 }

@@ -1,35 +1,40 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 using Entitas.Unity;
+
 using UnityEngine;
 
-public class RemoveViewSystem : ReactiveSystem<GameEntity>
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
 {
-    private Contexts m_contexts;
-
-    public RemoveViewSystem (Contexts contexts) : base(contexts.game)
+    public class RemoveViewSystem : ReactiveSystem<GameEntity>
     {
-        m_contexts = contexts;
-    }
+        private Contexts m_contexts;
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        return context.CreateCollector(GameMatcher.Destroyed);
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.isDestroyed && entity.hasView;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach(var e in entities)
+        public RemoveViewSystem (Contexts contexts) : base(contexts.game)
         {
-            var go = e.view.gameObject;
-            go.Unlink();
-            GameObject.Destroy(go);
-            e.RemoveView();
+            m_contexts = contexts;
+        }
+
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {
+            return context.CreateCollector(GameMatcher.Destroyed);
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.isDestroyed && entity.hasView;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach(var e in entities)
+            {
+                var go = e.view.gameObject;
+                EntityLinkExtension.Unlink((GameObject) go);
+                GameObject.Destroy(go);
+                e.RemoveView();
+            }
         }
     }
 }

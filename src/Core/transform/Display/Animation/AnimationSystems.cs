@@ -1,7 +1,8 @@
-﻿using ECS.Core.transform.Display.Animation.Core.Logic;
-using ECS.Core.transform.Display.Animation.Events.Logic;
+﻿
+using Libraries.btcp.ECS.src.Core.transform.Display.Animation.Core.Logic;
+using Libraries.btcp.ECS.src.Core.transform.Display.Animation.Events.Logic;
 
-namespace ECS.Core.transform.Display.Animation
+namespace Libraries.btcp.ECS.src.Core.transform.Display.Animation
 {
     public sealed class AnimationSystems : Feature
     {

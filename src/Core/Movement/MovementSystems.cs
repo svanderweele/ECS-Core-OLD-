@@ -1,9 +1,13 @@
-﻿using Assets.Sources.Transform.Movement.Logic;
+﻿
+using Libraries.btcp.ECS.src.Core.Movement.Logic;
 
-public sealed class MovementSystems : Feature
+namespace Libraries.btcp.ECS.src.Core.Movement
 {
-    public MovementSystems(Contexts contexts) : base("Movement Systems")
+    public sealed class MovementSystems : Feature
     {
-        Add(new MoveSystem(contexts));
+        public MovementSystems(Contexts contexts) : base("Movement Systems")
+        {
+            Add(new MoveSystem(contexts));
+        }
     }
 }

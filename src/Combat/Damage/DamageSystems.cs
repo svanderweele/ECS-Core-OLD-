@@ -1,7 +1,13 @@
-﻿public sealed class DamageSystems : Feature
+﻿
+using Libraries.btcp.ECS.src.Combat.Damage.Logic;
+
+namespace Libraries.btcp.ECS.src.Combat.Damage
 {
-    public DamageSystems(Contexts contexts) : base("Damage Systems")
+    public sealed class DamageSystems : Feature
     {
-        Add(new ApplyDamageSystem(contexts));
+        public DamageSystems(Contexts contexts) : base("Damage Systems")
+        {
+            Add(new ApplyDamageSystem(contexts));
+        }
     }
 }

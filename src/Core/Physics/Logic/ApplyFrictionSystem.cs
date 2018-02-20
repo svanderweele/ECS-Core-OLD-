@@ -1,23 +1,27 @@
 ﻿using Entitas;
 
-public class ApplyFrictionSystem : IExecuteSystem
+
+namespace Libraries.btcp.ECS.src.Core.Physics.Logic
 {
-    private Contexts m_contexts;
-    private IGroup<GameEntity> m_group;
-
-    public ApplyFrictionSystem (Contexts contexts)
+    public class ApplyFrictionSystem : IExecuteSystem
     {
-        m_contexts = contexts;
-        m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Friction, GameMatcher.Velocity, GameMatcher.OnGround));
-    }
+        private Contexts m_contexts;
+        private IGroup<GameEntity> m_group;
 
-    public void Execute()
-    {
-        foreach (var e in m_group.GetEntities())
+        public ApplyFrictionSystem (Contexts contexts)
         {
-            var velocity = e.velocity.value;
-            var friction = e.friction.value;
-            e.ReplaceVelocity(velocity * friction);
+            m_contexts = contexts;
+            m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Friction, GameMatcher.Velocity, GameMatcher.OnGround));
+        }
+
+        public void Execute()
+        {
+            foreach (var e in m_group.GetEntities())
+            {
+                var velocity = e.velocity.value;
+                var friction = e.friction.value;
+                e.ReplaceVelocity(velocity * friction);
+            }
         }
     }
 }

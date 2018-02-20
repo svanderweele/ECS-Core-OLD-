@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-namespace ECS.Core.Parenting
+namespace Libraries.btcp.ECS.src.Core.Parenting
 {
     public static class ParentingHelpers
     {

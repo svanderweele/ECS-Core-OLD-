@@ -1,4 +1,9 @@
-﻿public sealed class RemovedWhenDeadComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Combat.Health.Components
 {
-    //flag 
+    public sealed class RemovedWhenDeadComponent : IComponent
+    {
+        //flag 
+    }
 }

@@ -1,4 +1,7 @@
-﻿public interface IListenerEntityKilled
+﻿namespace Libraries.btcp.ECS.src.Combat.Events.Interfaces
 {
-    void OnEntityKilled(int entity);
+    public interface IListenerEntityKilled
+    {
+        void OnEntityKilled(int entity);
+    }
 }

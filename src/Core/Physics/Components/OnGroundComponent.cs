@@ -1,6 +1,6 @@
 ﻿using Entitas;
 
-namespace ECS.Core.Movement.Physics.Components
+namespace Libraries.btcp.ECS.src.Core.Physics.Components
 {
     public class OnGroundComponent : IComponent
     {

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using Entitas;
 using Entitas.Unity;
+
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace ECS.Core.transform.Display.View.Logic
+
+namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
 {
     public class AddViewSystem : ReactiveSystem<GameEntity>
     {

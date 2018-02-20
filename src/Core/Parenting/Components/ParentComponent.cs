@@ -1,4 +1,9 @@
-﻿public sealed class ParentComponent : Entitas.IComponent
+﻿using Entitas;
+
+namespace Libraries.btcp.ECS.src.Core.Parenting.Components
 {
-    public int value;
+    public sealed class ParentComponent : IComponent
+    {
+        public int value;
+    }
 }

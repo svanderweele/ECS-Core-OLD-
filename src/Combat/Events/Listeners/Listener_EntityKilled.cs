@@ -1,4 +1,10 @@
-﻿public sealed class Listener_EntityKilled : Entitas.IComponent
+﻿using Entitas;
+using Libraries.btcp.ECS.src.Combat.Events.Interfaces;
+
+namespace Libraries.btcp.ECS.src.Combat.Events.Listeners
 {
-    public IListenerEntityKilled listener;
+    public sealed class Listener_EntityKilled : IComponent
+    {
+        public IListenerEntityKilled listener;
+    }
 }

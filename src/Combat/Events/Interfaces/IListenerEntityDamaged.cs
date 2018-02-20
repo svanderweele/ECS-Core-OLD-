@@ -1,4 +1,7 @@
-﻿public interface IListenerEntityDamaged
+﻿namespace Libraries.btcp.ECS.src.Combat.Events.Interfaces
 {
-    void OnEntityDamaged(int entityID, int attackerID, float damage);
+    public interface IListenerEntityDamaged
+    {
+        void OnEntityDamaged(int entityID, int attackerID, float damage);
+    }
 }

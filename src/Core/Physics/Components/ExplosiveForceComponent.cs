@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using Entitas;
+using UnityEngine;
 
-public sealed class ExplosiveForceComponent : Entitas.IComponent
+namespace Libraries.btcp.ECS.src.Core.Physics.Components
 {
-    public Vector2 value;
+    public sealed class ExplosiveForceComponent : IComponent
+    {
+        public Vector2 value;
+    }
 }

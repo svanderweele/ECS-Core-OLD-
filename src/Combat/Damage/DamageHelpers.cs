@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace ECS.Combat.Damage
+
+namespace Libraries.btcp.ECS.src.Combat.Damage
 {
     public static class DamageHelpers
     {

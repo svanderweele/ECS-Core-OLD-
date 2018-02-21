@@ -19,6 +19,7 @@ namespace Libraries.btcp.ECS.src.Core
         {
             //TODO : Organise systems better
             Add(new ParentingSystems(contexts));
+            Add(new CollisionSystems(contexts));
             Add(new InputSystems(contexts));
             Add(new TransformSystems(contexts));
             Add(new ManagementSystems(contexts));
@@ -30,7 +31,6 @@ namespace Libraries.btcp.ECS.src.Core
             Add(new CombatSystems(contexts));
             Add(new ItemSystems(contexts));
             Add(new AISystems(contexts));
-        
             Add(new EffectSystems(contexts));
         }
     }

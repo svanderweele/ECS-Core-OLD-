@@ -18,12 +18,12 @@ namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.Destroyed);
+            return context.CreateCollector(GameMatcher.Destroyed.Added(), GameMatcher.Prefab.Removed());
         }
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.isDestroyed && entity.hasView;
+            return (entity.isDestroyed || (entity.hasPrefab == false && entity.hasSprite == false && entity.hasGameObject == false) && entity.hasView);
         }
 
         protected override void Execute(List<GameEntity> entities)

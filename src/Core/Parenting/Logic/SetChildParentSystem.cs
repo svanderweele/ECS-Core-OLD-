@@ -28,7 +28,7 @@ namespace Libraries.btcp.ECS.src.Core.Parenting.Logic
                 if (e.hasView)
                 {
                     go = e.view.gameObject;
-
+                    
                     if (parent.hasView)
                     {
                         var parentGO = parent.view.gameObject;

@@ -1,5 +1,5 @@
 ﻿using Entitas;
-
+using UnityEngine;
 
 
 namespace Libraries.btcp.ECS.src.AI.Sensors.Targeting.Logic
@@ -21,7 +21,7 @@ namespace Libraries.btcp.ECS.src.AI.Sensors.Targeting.Logic
             {
                 var targetID = e.target.value;
                 var target = m_contexts.game.GetEntityWithId(targetID);
-                if (target == null)
+                if (target == null || target.isDestroyed)
                 {
                     e.RemoveTarget();
                 }

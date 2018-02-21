@@ -12,7 +12,7 @@ namespace Libraries.btcp.ECS.src.Core.Physics.Logic
         public ApplyVelocitySystem(Contexts contexts)
         {
             m_contexts = contexts;
-            m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Velocity));
+            m_group = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Velocity, GameMatcher.Position));
         }
 
         public void Execute()

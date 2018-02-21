@@ -8,7 +8,7 @@ namespace Libraries.btcp.ECS.src.Core.Parenting
         public static void AddParent(GameEntity e, GameEntity parent, Vector2 offset)
         {
             e.AddParent(parent.id.value);
-            e.AddPosition(parent.position.value + offset);
+            e.AddPosition(offset);
         }
     }
 }

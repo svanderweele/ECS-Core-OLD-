@@ -22,7 +22,23 @@ namespace Libraries.btcp.ECS.src.AI.Sensors.Sight.Logic
                 var target = m_contexts.game.GetEntityWithId(e.target.value);
 
                 var position = e.position.value;
+                   
+                if (e.hasParent)
+                {
+                    var parent = m_contexts.game.GetEntityWithId(e.parent.value);
+                    position += (Vector2) parent.view.gameObject.transform.position;
+                }
+
+
                 var targetPosition = target.position.value;
+                
+                if (target.hasParent)
+                {
+                    var parent = m_contexts.game.GetEntityWithId(target.parent.value);
+                    targetPosition += (Vector2) parent.view.gameObject.transform.position;
+                }
+
+
                 var diff = targetPosition - position;
                 var rotation = Vector3.zero;
 
@@ -30,7 +46,7 @@ namespace Libraries.btcp.ECS.src.AI.Sensors.Sight.Logic
                 {
                     rotation = e.rotation.value;
                 }
-
+                 
                 rotation.z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                 e.ReplaceRotation(rotation);
             }

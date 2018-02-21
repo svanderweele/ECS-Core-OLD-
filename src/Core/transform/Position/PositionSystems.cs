@@ -8,9 +8,10 @@ namespace Libraries.btcp.ECS.src.Core.transform.Position
     {
         public PositionSystems(Contexts contexts)
         {
+            Add(new RemoveCopyPositionSystem(contexts));
             Add(new AddPositionSystem(contexts));
+            Add(new CopyPositionSystem(contexts));
             Add(new RenderPositionSystem(contexts));
-            Add(new EffectShakeSystems(contexts));
         }
     }
 }   

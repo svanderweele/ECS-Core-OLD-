@@ -58,7 +58,7 @@ namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
 
                     go = GameObject.Instantiate(prefab);
                     go.name = prefab.name;
-
+                    go.transform.SetParent(goContainer, false);
                     CreateView(e, go);
                     continue;
                 }
@@ -67,6 +67,7 @@ namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
                 {
                     name = e.sprite.name;
                     go = new GameObject(name);
+                    go.transform.SetParent(goContainer, false);
                     CreateView(e, go);
                     continue;
                 }
@@ -75,6 +76,7 @@ namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
                 {
                     name = e.animatorController.name;
                     go = new GameObject(name);
+                    go.transform.SetParent(goContainer, false);
                     CreateView(e, go);
                     continue;
                 }
@@ -87,8 +89,8 @@ namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
         private void CreateView(GameEntity entity, GameObject go)
         {
             go.Link(entity, m_contexts.game);
-            go.transform.SetParent(goContainer, false);
             entity.AddView(go);
         }
+        
     }
 }

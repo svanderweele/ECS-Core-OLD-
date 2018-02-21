@@ -35,6 +35,7 @@ namespace Libraries.btcp.ECS.src.Core.Physics.Logic
                         if (velocity.y < 0)
                         {
                             velocity.y = 0; //Stop falling immediately
+                            entity.RemoveFallToGround();
                         }
 
                         entity.ReplaceVelocity(velocity);

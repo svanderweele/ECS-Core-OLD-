@@ -10,11 +10,13 @@ namespace Libraries.btcp.ECS.src.Combat.Damage.Logic
     {
         private Contexts m_contexts;
         private IGroup<GameEntity> m_damageListeners;
+        private IGroup<GameEntity> m_takeDamageComplete;
 
         public ApplyDamageSystem(Contexts contexts) : base(contexts.game)
         {
             m_contexts = contexts;
             m_damageListeners = m_contexts.game.GetGroup(GameMatcher.Listener_EntityDamaged);
+            m_takeDamageComplete = m_contexts.game.GetGroup(GameMatcher.TakeDamageComplete);
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -29,6 +31,13 @@ namespace Libraries.btcp.ECS.src.Combat.Damage.Logic
 
         protected override void Execute(List<GameEntity> entities)
         {
+            //Organised systems better to avoid having to do this
+            foreach (var e in m_takeDamageComplete.GetEntities())
+            {
+                e.isTakeDamageComplete = false;
+            }
+            
+            
             foreach (var e in entities)
             {
                 var attacks = e.takeDamage.attacks;
@@ -43,6 +52,7 @@ namespace Libraries.btcp.ECS.src.Combat.Damage.Logic
                 currentHp -= totalDamage;
                 e.ReplaceHealth(currentHp, e.health.total);
                 e.RemoveTakeDamage();
+                e.isTakeDamageComplete = true;
 
                 //TODO : ShakeHelpers?
                 e.AddShake(new Vector2(.05f, .05f));
@@ -58,5 +68,6 @@ namespace Libraries.btcp.ECS.src.Combat.Damage.Logic
                 }
             }
         }
+
     }
 }

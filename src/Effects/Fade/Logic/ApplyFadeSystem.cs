@@ -21,7 +21,7 @@ public class ApplyFadeSystem : IExecuteSystem
             var go = e.view.gameObject;
             
             
-            //TODO : RendererHelpers - GetAllRenderers, Include all elements that have color property
+            //TODO - RendererHelpers - GetAllRenderers, Include all elements that have color property
             var renderers = go.GetComponentsInChildren<Text>();
 
             var time = e.fadeTime.time;

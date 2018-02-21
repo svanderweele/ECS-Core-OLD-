@@ -53,7 +53,7 @@ namespace Libraries.btcp.ECS.src.Core.Input.Logic
                         newEntity.isMouseListener && newEntity.hasView &&
                         newEntity.view.gameObject.GetComponent<Collider2D>() == hit.collider);
 
-                    //TODO : Also log close ray hits? 
+                    //TODO - Also log close ray hits? 
                     if (entity != null)
                     {
                         if (e.isLeftMouse)

@@ -39,7 +39,7 @@ namespace Libraries.btcp.ECS.src.Core.transform.Position.Logic
 
         private void ApplyPosition(GameEntity e)
         {
-            //TODO : If Entity has parent, should I add a LocalPositionComponent? At the moment using PositionComponent does not give actual position
+            //TODO - If Entity has parent, should I add a LocalPositionComponent? At the moment using PositionComponent does not give actual position
             var go = e.view.gameObject;
             var pos = e.position.value;
 

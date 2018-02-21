@@ -15,7 +15,7 @@ public class CopyPositionSystem : IExecuteSystem
     {
         foreach (var e in m_group.GetEntities())
         {
-            //TODO : remove copy position if target removed
+            //TODO - remove copy position if target removed
             var target = m_contexts.game.GetEntityWithId(e.copyPosition.entityId);
             
             var pos = target.view.gameObject.transform.position;

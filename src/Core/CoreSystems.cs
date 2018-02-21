@@ -17,7 +17,7 @@ namespace Libraries.btcp.ECS.src.Core
     {
         public CoreSystems(Contexts contexts) : base("Core Systems")
         {
-            //TODO : Organise systems better
+            //TODO - Organise systems better
             Add(new ParentingSystems(contexts));
             Add(new CollisionSystems(contexts));
             Add(new InputSystems(contexts));

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-
+using Libraries.btcp.ECS.src.Core.transform.Position.Shake;
 using UnityEngine;
 
 
@@ -54,9 +54,7 @@ namespace Libraries.btcp.ECS.src.Combat.Damage.Logic
                 e.RemoveTakeDamage();
                 e.isTakeDamageComplete = true;
 
-                //TODO : ShakeHelpers?
-                e.AddShake(new Vector2(.05f, .05f));
-                e.AddShakeDuration(.25f);
+                ShakeHelpers.AddShake(e, new Vector2(.05f, .05f), .25f);
 
 
                 foreach (var atk in attacks)

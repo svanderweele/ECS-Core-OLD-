@@ -36,7 +36,7 @@ public class ScaleBounceSystem : IExecuteSystem
                 scaleValue += ((totalTime - currentTime) / totalTime) * bounce;
             }
             
-            //TODO : ScaleComponent?
+            //TODO - ScaleComponent?
             view.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
 
             currentTime += Time.deltaTime;

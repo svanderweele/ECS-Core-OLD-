@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 using Libraries.btcp.ECS.src.Core.transform.Position.Shake;
+using Libraries.btcp.src.Stats.Core.Attributes;
+using Libraries.btcp.src.Stats.ECS;
+using Mine.Stats;
 using UnityEngine;
 
 
@@ -26,7 +29,7 @@ namespace Libraries.btcp.ECS.src.Combat.Damage.Logic
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.hasTakeDamage && entity.hasHealth;
+            return entity.hasTakeDamage;
         }
 
         protected override void Execute(List<GameEntity> entities)
@@ -48,9 +51,13 @@ namespace Libraries.btcp.ECS.src.Combat.Damage.Logic
                     totalDamage += atk.Value;
                 }
 
-                var currentHp = e.health.value;
-                currentHp -= totalDamage;
-                e.ReplaceHealth(currentHp, e.health.total);
+
+                if (e.hasStatDirector == false)
+                {
+                    Debug.LogWarning("Can't take damage without Stat Director!");
+                }
+
+                StatHelpers.DecreaseStatValue(e, StatId.Current_Health, totalDamage);
                 e.RemoveTakeDamage();
                 e.isTakeDamageComplete = true;
 

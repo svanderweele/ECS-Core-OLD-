@@ -9,7 +9,7 @@ namespace Libraries.btcp.ECS.src.Core.transform.Display.View
         {
             Add(new AddViewSystem(contexts));
             Add(new RemoveViewSystem(contexts));
-            Add(new ChangeCanvasElementParentSystem(contexts));
+//            Add(new ChangeCanvasElementParentSystem(contexts));
         }
     }
 }

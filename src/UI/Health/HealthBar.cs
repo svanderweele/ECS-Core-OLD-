@@ -1,6 +1,8 @@
 ﻿using Libraries.btcp.ECS.src.Combat.Events.Interfaces;
 using Libraries.btcp.ECS.src.Core.Management.Events;
+using Libraries.btcp.src.Stats.ECS;
 using Mine.ECS.Gameplay.UI.Components;
+using Mine.Stats;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,8 +29,9 @@ namespace Libraries.btcp.src.UI.Health
 
         private void UpdateHealth()
         {
-            var health = m_actor.health.value;
-            var perc =  (health / m_actor.health.total);
+            var health = StatHelpers.CalculateStat(m_actor, StatId.Current_Health);
+            var totalHealth = StatHelpers.CalculateStat(m_actor, StatId.Total_Health);
+            var perc =  (health / totalHealth);
             m_contentImage.fillAmount = perc;
         }
 

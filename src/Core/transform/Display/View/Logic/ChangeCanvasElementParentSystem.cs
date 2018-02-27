@@ -14,7 +14,6 @@ namespace Libraries.btcp.ECS.src.Core.transform.Display.View.Logic
         public ChangeCanvasElementParentSystem (Contexts contexts) : base(contexts.game)
         {
             m_contexts = contexts;
-            m_canvas = GameObject.FindObjectOfType<Canvas>().transform.Find("Entities");
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

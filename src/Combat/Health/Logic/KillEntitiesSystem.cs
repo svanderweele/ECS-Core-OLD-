@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-
+using Libraries.btcp.src.Stats.ECS;
+using Mine.Stats;
 using UnityEngine;
 
 
@@ -17,19 +18,19 @@ namespace Libraries.btcp.ECS.src.Combat.Health.Logic
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.Health);
+            return context.CreateCollector(GameMatcher.StatDirector);
         }
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.hasHealth && entity.isDead == false;
+            return entity.isDead == false && entity.hasStatDirector;
         }
 
         protected override void Execute(List<GameEntity> entities)
         {
             foreach (var e in entities)
             {
-                var currentHp = e.health.value;
+                var currentHp = StatHelpers.CalculateStat(e, StatId.Current_Health);
 
                 if (currentHp <= 0)
                 {

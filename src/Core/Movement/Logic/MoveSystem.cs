@@ -1,5 +1,6 @@
 ﻿using Entitas;
-
+using Libraries.btcp.src.Stats.ECS;
+using Mine.Stats;
 using UnityEngine;
 
 namespace Libraries.btcp.ECS.src.Core.Movement.Logic
@@ -37,7 +38,7 @@ namespace Libraries.btcp.ECS.src.Core.Movement.Logic
 
                 if (e.hasVelocity) velocity = e.velocity.value;
 
-                var speed = e.speed.value;
+                var speed = StatHelpers.CalculateStat(e, StatId.Movement_Speed);
                 var targetSpeed = Vector2.zero;
                 var force = 1f;
 
